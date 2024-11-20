@@ -341,10 +341,10 @@ plate_boarder_adjust u_plate_boarder_adjust(
 
 
 /*	
-	assign  plate_boarder_up    = max_line_left;
-	assign  plate_boarder_down  = max_line_right;
-	assign  plate_boarder_left 	= max_line_up;
-	assign  plate_boarder_right	= max_line_down;
+	assign  plate_boarder_up    = max_line_up;
+	assign  plate_boarder_down  = max_line_down;
+	assign  plate_boarder_left 	= max_line_left;
+	assign  plate_boarder_right	= max_line_right;
 */
 
 

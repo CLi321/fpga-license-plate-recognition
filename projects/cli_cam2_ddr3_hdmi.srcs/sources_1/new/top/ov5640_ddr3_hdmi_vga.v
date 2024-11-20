@@ -1,19 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////////
-// Company       : 武汉芯路恒科技有限公司
-//                 http://xiaomeige.taobao.com
-// Web           : http://www.corecourse.cn
-// 
-// Create Date   : 2019/05/01 00:00:00
-// Module Name   : ov5640_ddr3_hdmi
-// Description   : 摄像头采集数据，DDR3缓存，HDMI接口输出
-// 
-// Dependencies  : 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-/////////////////////////////////////////////////////////////////////////////////
+
 
 module ov5640_ddr3_hdmi_vga(
   //System clock reset
@@ -63,7 +48,7 @@ module ov5640_ddr3_hdmi_vga(
 );
     assign  HDMI_OUT_EN2 = 1;
     
-//Resolution_1280x720  像素时钟为74.25MHz
+//Resolution_800x600  像素时钟为40MHz
 parameter DISP_WIDTH  = 800;
 parameter DISP_HEIGHT = 600;
 
@@ -208,9 +193,7 @@ wire         post_frame_de             ;
 wire  [23:0] post_rgb                  ;
 
 
-//  assign wrfifo_wren = image_data_valid;
-//  assign wrfifo_din = image_data;
-//  assign wrfifo_clr = ~camera_init_done;
+
   assign wrfifo_wren  = post_frame_de;
   assign wrfifo_din   = {post_rgb[23:19],post_rgb[15:10],post_rgb[7:3]};
   assign wrfifo_clr   = ~camera_init_done;
@@ -328,8 +311,8 @@ image_process #(
   )
   u_image_process (
     //module clock
-    .clk              (pclk_bufg_o ),           // 时钟信号
-    .rst_n            (~g_rst_p    ),          // 复位信号（低有效）
+    .clk              (pclk_bufg_o ),           
+    .rst_n            (~g_rst_p    ),         
     //图像处理前的数据接口
     .pre_frame_vsync  (image_data_vs   ),
     .pre_frame_href   (image_data_hs   ),
